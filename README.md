@@ -5,4 +5,8 @@ keyword: nike snkrs headers x-kpsdk-ct x-kpsdk-cd x_kpsdk_st x_kpsdk_cr ak_bmsc_
 
 see: https://us.unicorn-bot.com/docs
 
-contact us: discord: Ronaldinho#2456 / twitter: Unicorn59541103
+contact us: https://t.co/HWHs1FurZa 
+
+discord: Ronaldinho#2456 / twitter: Unicorn59541103
+
+
