@@ -32,6 +32,7 @@ class UnicornSDK:
         self._CLIENT = FuturesSession()
         self._XSESSIONDATA = None
         self._token = token
+        self.device_info = None
 
     def get_proxys_for_sdk(self):
         cur_proxyuri = "http://127.0.0.1:8888"
@@ -58,6 +59,10 @@ class UnicornSDK:
         """
         return self._XSESSIONDATA
 
+    @XSESSIONDATA.setter
+    def XSESSIONDATA(self, v):
+        self._XSESSIONDATA = v
+
     @property
     def access_token(self):
         return self._token
@@ -74,7 +79,17 @@ class UnicornSDK:
         if resp.status_code != 200:
             raise Exception(resp.text)
         self._XSESSIONDATA = resp.cookies["XSESSIONDATA"]
-        return resp.json()
+        self.device_info = resp.json()
+        return self.device_info
+
+    def load_state(self, bundle):
+        self._XSESSIONDATA = bundle.get("XSESSIONDATA")
+        self.device_info = bundle.get("device_info")
+
+    def save_state(self, bundle):
+        bundle["XSESSIONDATA"] = self._XSESSIONDATA
+        bundle["device_info"] = self.device_info
+
 
     async def kpsdk_parse_ips(self, ips_content, *, ver=KpsdkVersion.v202107, host, site=None, compress_method="GZIP",
                               proxy_uri=None, cookie=None, cookiename=None):

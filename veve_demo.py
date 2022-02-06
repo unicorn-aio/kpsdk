@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import os
 from datetime import datetime
 import urllib3
 
@@ -27,7 +28,7 @@ def get_proxys():
 
 
 async def asyncmain():
-    my_token = "TOKEN_FROM_LOGIN"
+    my_token = os.getenv("MYTOKEN", "TOKEN_FROM_LOGIN")
     sdk = UnicornSDK(my_token)
     # sdk = UnicornSDK("http://localhost:9000")
     device = await sdk.init_session("testid", platform=PlatForm.ANDROID)
