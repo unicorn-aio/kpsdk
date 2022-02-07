@@ -7,6 +7,7 @@ import uuid
 from datetime import datetime, timedelta
 import urllib3
 from pathlib import Path
+import sys
 
 urllib3.disable_warnings()
 
@@ -27,7 +28,6 @@ class Veve:
     """
 
     def __init__(self, sessionid, *, token, platform=PlatForm.IOS,
-                 api_url="http://apiserver-latest.unicorn-bot.com",
                  origin="https://mobile.api.prod.veve.me"):
         self.sessionid = sessionid
         self.platform = platform
@@ -36,7 +36,7 @@ class Veve:
         self.st_diff = None
         self.x_kpsdk_ct_expiretime = None
         self.orgin = origin
-        self.sdk = UnicornSDK(token=token, api_url=api_url)
+        self.sdk = UnicornSDK(token=token)
         self.client = FuturesSession()
         self.useragent = None
         self.x_kpsdk_v = "i-1.6.0"
@@ -219,7 +219,7 @@ class Veve:
             "client-manufacturer": "apple",
             "client-user-id": self.client_user_id,
             "client-id": self.client_id,
-            "accept-language": "en-us",
+            "accept-language": "zh-cn",
             "x-kpsdk-v": self.x_kpsdk_v,
             "client-installer": "appstore",
             "client-carrier": "unknown",
@@ -326,6 +326,7 @@ async def asyncmain():
 
     # test get AppMetaInfo
     await test_AppMetaInfo(veve)
+    # await test_if_ct_could_last_long(veve)
 
     veve.save_session()
 

@@ -30,7 +30,6 @@ def get_proxys():
 async def asyncmain():
     my_token = os.getenv("MYTOKEN", "TOKEN_FROM_LOGIN")
     sdk = UnicornSDK(my_token)
-    # sdk = UnicornSDK("http://localhost:9000")
     device = await sdk.init_session("testid", platform=PlatForm.ANDROID)
     useragent = device["user_agent"]
 
@@ -101,7 +100,7 @@ async def asyncmain():
                 "accept-encoding": "gzip, deflate, br",
                 "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
                 "client-name": "veve-web-wallet",
-                "client-version": "1.2.9",
+                "client-version": "1.2.28",
                 "referer": f"{orgin}/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/fp",
                 "origin": "https://omi.veve.me",
                 "user-agent": useragent,

@@ -23,7 +23,7 @@ def get_proxys():
 async def asyncmain():
     my_token = "TOKEN_FROM_LOGIN"
     sdk = UnicornSDK(token=my_token)
-    with open("./tests/ips.js", "rb") as f:
+    with open("../tests/ips.js", "rb") as f:
         content = f.read()
         resp = await sdk.kpsdk_parse_ips(content, host="https://s3.nikecdn.com")
         for k, v in resp.items():

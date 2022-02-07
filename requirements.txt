@@ -1,3 +1,4 @@
 brotli
 loguru
 requests-futures
+python-dateutil
